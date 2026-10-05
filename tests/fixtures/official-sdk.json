@@ -1,0 +1,83 @@
+{
+  "provenance": {
+    "source": "https://github.com/hyperliquid-dex/hyperliquid-python-sdk/blob/master/hyperliquid/utils/signing.py",
+    "sha256": "938ec0a1f9611874b423ca946696e19a71d32d14709f521ea5d526f4398c0b85",
+    "note": "Official SDK payload/hash/sign_inner; explicit chain 998 instead of SDK default 421614. Public test keys 1..5 only."
+  },
+  "capture": {
+    "action": {
+      "hyperliquidChain": "Testnet",
+      "signatureChainId": "0x3e6",
+      "agentAddress": "0xe1ab8145f7e55dc933d51a18c793f901a3a0b276",
+      "nonce": 1790131200000,
+      "type": "approveAgent"
+    },
+    "nonce": 1790131200000,
+    "signature": {
+      "r": "0xf812b041f890c287111b3ded162f5b33726c548ff2b4550fb19da821026c27b9",
+      "s": "0x31a39bce374c90feac0ad2deda37f0271a993c2383e0ea1b8679d5eda294bb8d",
+      "v": 27
+    },
+    "vaultAddress": null,
+    "expiresAfter": null,
+    "isFrontend": true
+  },
+  "m": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+  "leader": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+  "config": {
+    "authorizedUsers": [
+      "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+      "0x2b5ad5c4795c026514f8317c7a215e218dccd6cf",
+      "0x6813eb9362372eef6200f3b1dbc3f819671cba69"
+    ],
+    "threshold": 2
+  },
+  "innerDigest": "0x5d18247e42714ec15ea180e77e04291dce32440f1de58444ccf3027e941f6860",
+  "originalDigest": "0x4e9ecca983b6a7920d4efdd5becdeb5e1c717b9f31c6a2e72cd6cc2e1347aa02",
+  "signatures": [
+    {
+      "r": "0x2178c3c1834e9b2431192fcc2f414032beeba679eca77bf335ac6b0722e1f793",
+      "s": "0x70c8b8d032064106543899cfade0dbfc6c332b8494f5d0ca32561c6d76dc31b8",
+      "v": 28
+    },
+    {
+      "r": "0x75d230218c32f8514a0536a4678c124e86b00d733c85ade511c24fa34eab35c9",
+      "s": "0x63af281947f39028e66950f9d444952dd2220d17fe530ad94b6303703a775502",
+      "v": 28
+    }
+  ],
+  "multi": {
+    "type": "multiSig",
+    "signatureChainId": "0x3e6",
+    "signatures": [
+      {
+        "r": "0x2178c3c1834e9b2431192fcc2f414032beeba679eca77bf335ac6b0722e1f793",
+        "s": "0x70c8b8d032064106543899cfade0dbfc6c332b8494f5d0ca32561c6d76dc31b8",
+        "v": 28
+      },
+      {
+        "r": "0x75d230218c32f8514a0536a4678c124e86b00d733c85ade511c24fa34eab35c9",
+        "s": "0x63af281947f39028e66950f9d444952dd2220d17fe530ad94b6303703a775502",
+        "v": 28
+      }
+    ],
+    "payload": {
+      "multiSigUser": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+      "outerSigner": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+      "action": {
+        "hyperliquidChain": "Testnet",
+        "signatureChainId": "0x3e6",
+        "agentAddress": "0xe1ab8145f7e55dc933d51a18c793f901a3a0b276",
+        "nonce": 1790131200000,
+        "type": "approveAgent"
+      }
+    }
+  },
+  "actionHash": "0xa859f477ecbd9699f3b165605d3e8f4e23de0119f497d3ab74afc61f308288d2",
+  "outerDigest": "0xab219635f5d48dee4bee4356006c59023345b8f3ba867e3d6e5b9662d99d777e",
+  "outerSignature": {
+    "r": "0x65e5cbbb49a2f31efcb3cce731e7cfa56a250a0afb125150a05d972b8ad499d1",
+    "s": "0x194432e804907f7c2e0b53a3697a58e00ee7dbf0d26c6530fb5244c857e78af5",
+    "v": 27
+  }
+}

@@ -1,0 +1,41 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {Window} from 'happy-dom';
+test('only the current signer sees a wallet switch hint, while completed signers remain quiet',async()=>{
+ const w=new Window({url:'https://test.example/panel.html?job=live'});
+ for(const [k,v] of Object.entries({window:w,document:w.document,location:w.location}))Object.defineProperty(globalThis,k,{value:v,configurable:true});
+ w.document.body.innerHTML='<div id="app"></div>';
+ const [a,b,c]=[1,2,3].map(n=>'0x'+String(n).repeat(40));
+ const job={localMode:true,status:'collecting',m:'0x'+'4'.repeat(40),leader:a,signatures:{} as Record<string,string>,config:{threshold:2,authorizedUsers:[a,b,c]},capture:{nonce:Date.now(),action:{hyperliquidChain:'Mainnet',signatureChainId:'0x3e7',agentAddress:'0x'+'5'.repeat(40)}}};
+ let current=a;
+ const rpc=async(t:string,arg:any={})=>t==='LIST'?{jobs:[],settings:{}}:t==='GET'?job:t==='LOCAL_STATE'?{wallets:[{brand:'okx',accounts:[current]}]}:t==='INNER'?{}:t==='SIGNATURE'?(job.signatures[arg.address]='verified',job):{};
+ const {start}=await import('../src/ui');
+ await start(rpc,async()=>({label:'OKX',sign:async()=> '0x1234' as any}));
+ const q=(sel:string)=>w.document.querySelector(sel) as HTMLElement|null;
+ const wait=async(pred:()=>boolean)=>{for(let i=0;i<100&&!pred();i++)await new Promise(r=>setTimeout(r,20));assert(pred(),'UI did not settle');};
+ try{
+  assert(q(`[data-route="${a}"]`));
+  assert.equal(q(`[data-route="${b}"]`),null);
+  const route=q(`[data-route="${a}"]`) as HTMLSelectElement;route.value='plugin:okx';route.dispatchEvent(new w.Event('change'));
+  (q(`[data-sign="${a}"]`) as HTMLButtonElement).click();
+  await wait(()=>!!job.signatures[a]&&!q('.busy-status'));
+  assert(q(`[data-route="${b}"]`));
+  assert.equal(q(`[data-route="${c}"]`),null);
+  assert.equal(q(`[data-account="${a}"]`),null);
+  const next=q(`[data-route="${b}"]`) as HTMLSelectElement;next.value='plugin:okx';next.dispatchEvent(new w.Event('change'));
+  assert.match(q('#active-wallet')!.textContent!,/切换到/);
+  assert.equal(q(`[data-member="${a}"] .account-mismatch`),null);
+  assert.equal(q(`[data-member="${c}"] .account-mismatch`),null);
+  current=b;
+  await wait(()=>!!q('#active-wallet')?.textContent?.includes('已连接所需地址'));
+  (q(`[data-sign="${b}"]`) as HTMLButtonElement).click();
+  await wait(()=>!!job.signatures[b]&&!q('.busy-status'));
+  assert.match(q('h1')!.textContent!,/成员签名已齐/);
+  assert.equal(q(`[data-route="${c}"]`),null);
+  assert.equal(q(`[data-member="${b}"] .account-mismatch`),null);
+  assert.match(q('#active-wallet')!.textContent!,/切换到/);
+  current=a;
+  await wait(()=>!!q('#active-wallet')?.textContent?.includes('已连接所需地址'));
+  assert.equal((q('#submit') as HTMLButtonElement).disabled,false);
+ }finally{w.dispatchEvent(new w.Event('pagehide'));await w.happyDOM.abort();}
+});

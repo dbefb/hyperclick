@@ -1,0 +1,10 @@
+import {build} from 'esbuild';
+import {createServer} from 'node:http';
+import {readFile,mkdir,writeFile,copyFile} from 'node:fs/promises';
+await mkdir('demo-dist',{recursive:true});
+await build({entryPoints:['src/demo.ts'],outfile:'demo-dist/demo.js',bundle:true,format:'esm',platform:'browser',target:'chrome120',define:{'process.env.NODE_ENV':'"production"'}});
+await copyFile('public/panel.css','demo-dist/panel.css');
+await copyFile('public/icons/hyperclick.svg','demo-dist/hyperclick.svg');
+await writeFile('demo-dist/index.html','<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hyperclick · 本地演示</title><link rel="stylesheet" href="panel.css"><body><div style="background:#6d4d1a;color:#ffe4ac;text-align:center;padding:10px;font:12px sans-serif">本地交互演示 · 钱包为模拟 · 不连接 HyperCore · 不上链</div><div id="app"></div><script type="module" src="demo.js"></script></body></html>');
+const files={'/':'index.html','/index.html':'index.html','/demo.js':'demo.js','/panel.css':'panel.css','/icons/hyperclick.svg':'hyperclick.svg'};
+createServer(async(req,res)=>{const f=files[new URL(req.url,'http://localhost').pathname];if(!f){res.writeHead(404);res.end();return;}res.setHeader('Content-Type',f.endsWith('.svg')?'image/svg+xml':f.endsWith('.js')?'text/javascript':f.endsWith('.css')?'text/css':'text/html');res.end(await readFile('demo-dist/'+f));}).listen(4173,'127.0.0.1',()=>console.log('Offline demo: http://localhost:4173'));

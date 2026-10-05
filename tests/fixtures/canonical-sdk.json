@@ -1,0 +1,93 @@
+{
+  "provenance": {
+    "sdk": "@nktkas/hyperliquid",
+    "version": "0.33.3",
+    "method": "approveAgent high-level API; fake transport, public test keys 1..5, no network submission"
+  },
+  "cases": [
+    {
+      "isTestnet": false,
+      "wire": {
+        "action": {
+          "type": "multiSig",
+          "signatureChainId": "0x3e7",
+          "signatures": [
+            {
+              "r": "0x573b13c594afdd27dd57cdb7f210f273e65f71c22773e43202dd6607aaae2db9",
+              "s": "0x4a185f69a35986f3e92da1981a3f2d135c0a4bd753174f907ae34d96614e8e93",
+              "v": 27
+            },
+            {
+              "r": "0xb0e3b5ed46592eca867775c66cd2aecc671637d3fb3a72ea10ce6133a186d78d",
+              "s": "0x89e7e664e1c6ecca40c3920b86d121289c574e1d3a0dee5ff485a8b3b216d80",
+              "v": 27
+            }
+          ],
+          "payload": {
+            "multiSigUser": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+            "outerSigner": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "action": {
+              "type": "approveAgent",
+              "signatureChainId": "0x3e7",
+              "hyperliquidChain": "Mainnet",
+              "agentAddress": "0xe1ab8145f7e55dc933d51a18c793f901a3a0b276",
+              "agentName": "",
+              "nonce": 1790131200000
+            }
+          }
+        },
+        "signature": {
+          "r": "0xdb092e6bf6cad563f6e2be6c8594342957d342c72e55099bd36eef0b8b65fa64",
+          "s": "0x0dfe6f7eab4008b345d729488b510ed36087346534604a470a1b6970c91144cb",
+          "v": 28
+        },
+        "nonce": 1790131200000
+      },
+      "innerDigest": "0x067de992776a90c35d500729c690d26ad9c4c3cc474717ebb4f531665ee90d7c",
+      "outerDigest": "0x6a89f27e9fa27bb2c648579fe9499bbd005a631a0439d359e523f1f5ed584748",
+      "actionHash": "0x1d0ec41790f6620f30fc35791b9c59f7c3ce70233b42e2d2ea51b1568d4bf45f"
+    },
+    {
+      "isTestnet": true,
+      "wire": {
+        "action": {
+          "type": "multiSig",
+          "signatureChainId": "0x3e6",
+          "signatures": [
+            {
+              "r": "0x2178c3c1834e9b2431192fcc2f414032beeba679eca77bf335ac6b0722e1f793",
+              "s": "0x70c8b8d032064106543899cfade0dbfc6c332b8494f5d0ca32561c6d76dc31b8",
+              "v": 28
+            },
+            {
+              "r": "0x75d230218c32f8514a0536a4678c124e86b00d733c85ade511c24fa34eab35c9",
+              "s": "0x63af281947f39028e66950f9d444952dd2220d17fe530ad94b6303703a775502",
+              "v": 28
+            }
+          ],
+          "payload": {
+            "multiSigUser": "0x1eff47bc3a10a45d4b230b5d10e37751fe6aa718",
+            "outerSigner": "0x7e5f4552091a69125d5dfcb7b8c2659029395bdf",
+            "action": {
+              "type": "approveAgent",
+              "signatureChainId": "0x3e6",
+              "hyperliquidChain": "Testnet",
+              "agentAddress": "0xe1ab8145f7e55dc933d51a18c793f901a3a0b276",
+              "agentName": "",
+              "nonce": 1790131200000
+            }
+          }
+        },
+        "signature": {
+          "r": "0xc16a2012e3a1246dd3cd94e8dec1bfcf2193a0c3161f038aeda1998eb82987b7",
+          "s": "0x7a3dd6252030ce089ee19dc2a904c95961347d3ddb25a69ccae7a241de670fda",
+          "v": 27
+        },
+        "nonce": 1790131200000
+      },
+      "innerDigest": "0x5d18247e42714ec15ea180e77e04291dce32440f1de58444ccf3027e941f6860",
+      "outerDigest": "0x9688c1f1a962906b817c564b0466b284d97290902bafbfef628d9191c1284e64",
+      "actionHash": "0xcb6dc7cc0b9ea13922971d912a2f917eaf39f0ca1ec11d97c08f894fa75539a2"
+    }
+  ]
+}

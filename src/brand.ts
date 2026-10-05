@@ -1,0 +1,2 @@
+// 图标源文件：改动后运行 npm run icons，同步浏览器与页面资源。
+export const HYPERCLICK_ICON_SVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewBox=\"0 0 64 64\"><rect width=\"64\" height=\"64\" rx=\"16\" fill=\"#43DEC4\"/><path fill=\"#0C2427\" d=\"M22 15h27v27l-9-9-10 10-9-9 10-10h-9zM17 40l7 7-7 7-7-7z\"/></svg>";
