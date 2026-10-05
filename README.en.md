@@ -2,7 +2,7 @@
 
 A local browser extension coordinating native HyperCore multisig operations initiated on the Hyperliquid web app. Wallet connection and signing confirmations remain in OKX Wallet or OneKey. Hyperclick does not request seed phrases or import private keys.
 
-**Status:** v0.7.3 development preview. Independent project, not endorsed by or affiliated with Hyperliquid, OKX or OneKey. No independent security audit has been completed for this version. An open-source license has not yet been selected; the current package remains `UNLICENSED`.
+**Status:** v0.7.3 development preview. Independent project, not endorsed by or affiliated with Hyperliquid, OKX or OneKey. No independent security audit has been completed for this version. Project-owned code is distributed under the MIT License; third-party notices are preserved.
 
 ## Workflow
 
@@ -21,7 +21,7 @@ Ordinary EVM deposit transactions, HyperEVM contract calls and special deployer/
 
 ## Build and install
 
-From the repository root (or `source/` in the release archive), use Node.js 20 or newer:
+From the repository root, use Node.js 20 or newer:
 
 ```sh
 npm ci
@@ -30,10 +30,16 @@ npm test
 npm run build
 ```
 
-Load `dist/` as an unpacked Chromium extension. The release archive provides a prebuilt `extension/` directory. Reload the extension and refresh the Hyperliquid page after updating. Do not keep two copies enabled.
+Load `dist/` as an unpacked Chromium extension. For a prebuilt installation, download `Hyperclick-v0.7.3-extension.zip` from [Releases](https://github.com/dbefb/hyperclick/releases), extract it and load the directory containing `manifest.json`. GitHub source archives require a build. Reload the extension and refresh the Hyperliquid page after updating. Do not keep two copies enabled.
 
 ## Data and security
 
 Proposal data, addresses, collected signatures and workflow state are held in extension session storage. Production code queries and submits to the official Hyperliquid API; it has no maintainer-operated backend, analytics or payment integration. The wallet and original web page have their own data policies. The extension processes security-sensitive authorization material even though it does not hold private keys.
 
-Read [architecture](docs/ARCHITECTURE.md), [privacy](PRIVACY.md), [security](SECURITY.md) and [third-party notices](THIRD_PARTY_NOTICES.txt). Private reporting contact and license selection must be completed before public release.
+Read [architecture](docs/ARCHITECTURE.md), [privacy](PRIVACY.md), [security](SECURITY.md) and [third-party notices](THIRD_PARTY_NOTICES.txt).
+
+Coordination currently requires one computer and one browser; remote signature synchronization is not supported.
+
+## License
+
+Project-owned code is available under the [MIT License](LICENSE).

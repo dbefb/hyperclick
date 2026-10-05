@@ -10,7 +10,7 @@
     "icons": "node scripts/generate-icons.mjs"
   },
   "keywords": [],
-  "author": "",
+  "author": "dbefb",
   "license": "MIT",
   "type": "module",
   "dependencies": {
