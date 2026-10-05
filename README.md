@@ -3,6 +3,7 @@
 面向 HyperCore 原生多签账户的本地浏览器扩展。原网页发起操作，Hyperclick 核对请求、协调成员签名、让提交人最终签署，并直接提交 HyperCore。
 
 独立开发项目，与 Hyperliquid、OKX、OneKey 无隶属或官方背书关系。当前是开发预览版，未经过独立安全审计；操作适配数量不代表全部通过真实钱包验收。
+<img width="1280" height="800" alt="01-Screenshot-1280x800" src="https://github.com/user-attachments/assets/135c3633-97ae-47ae-b247-aab65d1876cd" />
 
 [下载安装包](https://github.com/dbefb/hyperclick/releases) · [English](README.en.md)
 
